@@ -1,16 +1,31 @@
+logging:
+  level:
+    org.springframework: DEBUG
+
 spring:
   application:
     name: ms-document
+  config:
+    import: "classpath:application-vault.yml,vault://"
   security:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/realms/pin-realm
+          issuer-uri: ${issuer-uri}
 
 server:
   port: 0
 
 eureka:
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: ${eureka-server}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
