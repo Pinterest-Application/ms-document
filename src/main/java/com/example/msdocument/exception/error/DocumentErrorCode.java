@@ -5,10 +5,8 @@ import org.springframework.http.HttpStatus;
 
 public enum DocumentErrorCode implements ErrorCode {
 
-    UNSUPPORTED_FILE_FORMAT(HttpStatus.UNSUPPORTED_MEDIA_TYPE, "Yalnız JPEG, PNG və WEBP formatları qəbul edilir."),
-    FILE_UPLOAD_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "Fayl yaddaşa saxlanılarkən xəta baş verdi."),
-    ;
-
+    UNSUPPORTED_FILE_FORMAT(
+            HttpStatus.UNSUPPORTED_MEDIA_TYPE, "Only JPEG, PNG, and WEBP formats are supported.");
 
 
     private final HttpStatus httpStatus;
@@ -33,4 +31,4 @@ public enum DocumentErrorCode implements ErrorCode {
     public String getDefaultMessage() {
         return this.defaultMessage;
     }
-    }
+}
